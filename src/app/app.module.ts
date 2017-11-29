@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 
 
 import { AppComponent } from './app.component';
+import { TemperatureMonitorService } from "./service/temperature-monitor.service";
+
 
 
 @NgModule({
@@ -10,9 +13,10 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [TemperatureMonitorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

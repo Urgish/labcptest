@@ -2,16 +2,17 @@
   <h3>Developer Name: Urgishkumar Vaghela</h3>
   <h3>Temperature Monitor</h3>
   <hr />
-  <form>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
     <label for="temperature">Add Temperature:</label>
-    <input name="temperature" id="temperature">
-    <button>Add</button>
+    <input type="number" name="temperature" id="temperature" ngModel required>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Add</button>
   </form>
   <hr />
+  <p *ngIf="temperatureRecords.length > 0">Temperature Records:{{temperatureRecords | json}} </p>
+  <p *ngIf="sortedTemperatureRecords.length > 0">Sorted Temperature Records:{{sortedTemperatureRecords | json}} </p>
+  <hr />
   <section>
-    <button>Get Median Temperature</button>
-    <p>Current Median: </p>
-
+    <button type="button" class="btn btn-primary" [disabled]="temperatureRecords.length < 1" (click)="getCurrentMedian()">Get Current Median Temperature</button>{{ currentMedian}}
   </section>
   <hr />
   <a href="jasmine-test-runner.html">Run Unit Tests</a>
